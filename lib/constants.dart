@@ -4,7 +4,7 @@ const kTitleFont = TextStyle(
     fontFamily: 'SigmarOne',
     color: Color(0XFF302725),
     //TODO: make this responsive
-    fontSize: 55,
+    fontSize: 45,
     decoration: TextDecoration.none);
 
 const kBackgroundColour = Color(0XFFe8dccd);
