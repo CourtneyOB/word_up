@@ -11,7 +11,7 @@ final dataProvider = StateNotifierProvider<DataProvider, CurrentGame>(
     (ref) => DataProvider(CurrentGame()));
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Word up',
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
