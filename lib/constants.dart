@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 const kTitleFont = TextStyle(
-    fontFamily: 'SigmarOne',
+    fontFamily: 'PassionOne',
     color: Color(0XFF302725),
-    //TODO: make this responsive
-    fontSize: 45,
+    fontSize: 100,
+    height: 1.2,
     decoration: TextDecoration.none);
 
 const kBackgroundColour = Color(0XFFe8dccd);
