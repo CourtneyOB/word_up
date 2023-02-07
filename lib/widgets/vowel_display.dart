@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:word_up/widgets/vowel_box.dart';
+import 'package:word_up/widgets/boxes/vowel_box.dart';
 
 class VowelDisplay extends StatelessWidget {
   const VowelDisplay({Key? key}) : super(key: key);

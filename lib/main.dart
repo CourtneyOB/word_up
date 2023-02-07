@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/model/current_game.dart';
-import 'package:word_up/screens/home_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:word_up/data_provider.dart';
 import 'package:word_up/screens/main_screen.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
-import 'package:word_up/widgets/letter_box.dart';
+import 'package:word_up/widgets/backing_container.dart';
+import 'package:word_up/widgets/boxes/letter_box.dart';
 
 class LetterBoxRow extends StatelessWidget {
   const LetterBoxRow({Key? key, this.sideBarLetter}) : super(key: key);
@@ -12,11 +13,7 @@ class LetterBoxRow extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: kBorderColour,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-          ),
+        child: BackingContainer(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 4.0),
             child: Row(

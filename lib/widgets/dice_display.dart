@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:word_up/constants.dart';
-import 'package:word_up/widgets/dice_box.dart';
+import 'package:word_up/widgets/backing_container.dart';
+import 'package:word_up/widgets/boxes/dice_box.dart';
 
 class DiceDisplay extends StatelessWidget {
   const DiceDisplay({Key? key}) : super(key: key);
@@ -9,11 +9,7 @@ class DiceDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: kBorderColour,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-          ),
+        child: BackingContainer(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Wrap(
