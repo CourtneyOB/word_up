@@ -16,7 +16,7 @@ class DiceBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BoxBacking(
-      width: 100,
+      width: 70,
       color: color,
       child: Center(
         child: AutoSizeText(

@@ -12,25 +12,31 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBorderColour,
       body: SafeArea(
-        child: Container(
-          color: kBorderColour,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: kBackgroundColour),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  TopBar(),
-                  DiceDisplay(),
-                  VowelDisplay(),
-                  LetterBoxRow(),
-                  BottomBar(),
-                ],
-              ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                color: kBackgroundColour),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const TopBar(),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: const [
+                        DiceDisplay(),
+                        VowelDisplay(),
+                        LetterBoxRow(),
+                      ],
+                    ),
+                  ),
+                ),
+                const BottomBar(),
+              ],
             ),
           ),
         ),

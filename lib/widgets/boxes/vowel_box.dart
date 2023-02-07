@@ -19,7 +19,7 @@ class VowelBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BoxBacking(
-      width: 80,
+      width: 70,
       child: Stack(children: [
         multi
             ? Stack(
