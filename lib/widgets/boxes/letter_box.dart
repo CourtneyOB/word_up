@@ -33,7 +33,7 @@ class LetterBox extends StatelessWidget {
             child: TextField(
               controller: controller,
               focusNode: focusNode,
-              maxLength: 2,
+              maxLength: 1,
               textAlign: TextAlign.center,
               inputFormatters: [UppercaseInputFormatter()],
               style: const TextStyle(fontSize: 40),

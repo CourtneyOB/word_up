@@ -12,18 +12,6 @@ class LetterBoxRow extends StatefulWidget {
 }
 
 class _LetterBoxRowState extends State<LetterBoxRow> {
-  /// zero-width space character
-  ///
-  /// this character can be added to a string to detect backspace.
-  /// The value, from its name, has a zero-width so it's not rendered
-  /// in the screen but it'll be present in the String.
-  ///
-  /// The main reason this value is used because in Flutter mobile,
-  /// backspace is not detected when there's nothing to delete.
-  /// the selection is at offset 1 so any character is inserted after it.
-  final _zwspEditingValue = const TextEditingValue(
-      text: '\u200b', selection: TextSelection(baseOffset: 1, extentOffset: 1));
-
   List<String> entry = ['', '', '', '', '', ''];
   List<TextEditingController> controllers = [];
   List<FocusNode> focusNodes = [];
@@ -34,7 +22,6 @@ class _LetterBoxRowState extends State<LetterBoxRow> {
     focusNodes = List.generate(6, (index) => FocusNode());
     controllers = List.generate(6, (index) {
       final ctrl = TextEditingController();
-      ctrl.value = _zwspEditingValue;
       return ctrl;
     });
   }
@@ -61,7 +48,7 @@ class _LetterBoxRowState extends State<LetterBoxRow> {
                     controller: controllers[index],
                     focusNode: focusNodes[index],
                     onChanged: (value) {
-                      if (value.length > 1) {
+                      if (value.isNotEmpty) {
                         // this is a new character event
                         if (index + 1 == focusNodes.length) {
                           // do something after the last character was inserted
@@ -71,20 +58,19 @@ class _LetterBoxRowState extends State<LetterBoxRow> {
                           focusNodes[index + 1].requestFocus();
                         }
                       } else {
+                        //TODO: not triggered when backspace empty field
                         // this is backspace event
                         // reset the controller
-                        controllers[index].value = _zwspEditingValue;
+                        controllers[index].value = TextEditingValue.empty;
                         if (index == 0) {
                           // do something if backspace was pressed at the first field
                           FocusScope.of(context).unfocus();
                         } else {
                           // go back to previous field
-                          controllers[index - 1].value = _zwspEditingValue;
                           focusNodes[index - 1].requestFocus();
                         }
                       }
-                      // make sure to remove the zwsp character
-                      entry[index] = value.replaceAll('\u200b', '');
+                      entry[index] = value;
                       print('current code = $entry');
                     },
                   );
