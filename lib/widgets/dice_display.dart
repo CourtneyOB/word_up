@@ -28,11 +28,11 @@ class DiceDisplay extends StatelessWidget {
                   letter: 'P',
                 ),
                 DiceBox(
-                  foreground: Colors.yellow,
+                  color: Colors.yellow,
                   letter: 'F',
                 ),
                 DiceBox(
-                  foreground: Colors.orange,
+                  color: Colors.orange,
                   letter: 'Z',
                 ),
               ],
