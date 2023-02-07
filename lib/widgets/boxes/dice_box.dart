@@ -16,7 +16,7 @@ class DiceBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: screenWidth(context) * 0.2,
+      width: 100,
       child: Padding(
         padding: const EdgeInsets.all(3.0),
         child: AspectRatio(

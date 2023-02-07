@@ -22,7 +22,6 @@ class MainScreen extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: kBackgroundColour),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   TopBar(),

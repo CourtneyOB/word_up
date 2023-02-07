@@ -20,7 +20,7 @@ class VowelBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: screenWidth(context) * 0.16,
+      width: 80,
       child: Padding(
         padding: const EdgeInsets.all(3.0),
         child: Stack(children: [

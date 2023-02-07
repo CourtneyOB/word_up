@@ -20,65 +20,69 @@ class LetterBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Center(
-        child: AspectRatio(
-          aspectRatio: 1,
-          child: Container(
-            decoration: BoxDecoration(
-                color: foreground,
-                borderRadius: const BorderRadius.all(Radius.circular(10))),
-            child: total
-                ? const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
-                    child: AutoSizeText(
-                      'TOTAL',
-                      textAlign: TextAlign.center,
-                      style: kTitleFont,
-                      maxLines: 1,
-                    ),
-                  )
-                : bonus
-                    ? const Padding(
-                        padding: EdgeInsets.only(left: 24.0, right: 8.0),
-                        child: AutoSizeText(
-                          '+1',
-                          textAlign: TextAlign.right,
-                          style: kTitleFont,
-                          maxLines: 1,
-                        ),
-                      )
-                    : multiLetter
-                        ? Stack(
-                            children: const [
-                              Align(
-                                alignment: Alignment(0, -0.8),
-                                child: Text('A'),
-                              ),
-                              Align(
-                                alignment: Alignment(0.65, -0.25),
-                                child: Text('E'),
-                              ),
-                              Align(
-                                alignment: Alignment(0.4, 0.65),
-                                child: Text('I'),
-                              ),
-                              Align(
-                                alignment: Alignment(-0.4, 0.65),
-                                child: Text('O'),
-                              ),
-                              Align(
-                                alignment: Alignment(-0.65, -0.25),
-                                child: Text('U'),
-                              ),
-                            ],
-                          )
-                        : Center(
-                            child: AutoSizeText(
-                              letter,
-                              style: kTitleFont,
-                            ),
+    return SizedBox(
+      width: 75,
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Center(
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: foreground,
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
+              child: total
+                  ? const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: AutoSizeText(
+                        'TOTAL',
+                        textAlign: TextAlign.center,
+                        style: kTitleFont,
+                        maxLines: 1,
+                      ),
+                    )
+                  : bonus
+                      ? const Padding(
+                          padding: EdgeInsets.only(left: 24.0, right: 8.0),
+                          child: AutoSizeText(
+                            '+1',
+                            textAlign: TextAlign.right,
+                            style: kTitleFont,
+                            maxLines: 1,
                           ),
+                        )
+                      : multiLetter
+                          ? Stack(
+                              children: const [
+                                Align(
+                                  alignment: Alignment(0, -0.8),
+                                  child: Text('A'),
+                                ),
+                                Align(
+                                  alignment: Alignment(0.65, -0.25),
+                                  child: Text('E'),
+                                ),
+                                Align(
+                                  alignment: Alignment(0.4, 0.65),
+                                  child: Text('I'),
+                                ),
+                                Align(
+                                  alignment: Alignment(-0.4, 0.65),
+                                  child: Text('O'),
+                                ),
+                                Align(
+                                  alignment: Alignment(-0.65, -0.25),
+                                  child: Text('U'),
+                                ),
+                              ],
+                            )
+                          : Center(
+                              child: AutoSizeText(
+                                letter,
+                                style: kTitleFont,
+                              ),
+                            ),
+            ),
           ),
         ),
       ),
