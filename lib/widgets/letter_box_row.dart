@@ -10,24 +10,32 @@ class LetterBoxRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Row(
-        children: [
-          LetterBox(
-            foreground: kBackgroundColour,
-            letter: sideBarLetter != null ? sideBarLetter! : '',
-            multiLetter: sideBarLetter == null ? true : false,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: kBorderColour,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
-          const LetterBox(),
-          const LetterBox(),
-          const LetterBox(),
-          const LetterBox(),
-          const LetterBox(
-            bonus: true,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                LetterBox(),
+                LetterBox(),
+                LetterBox(),
+                LetterBox(),
+                LetterBox(
+                  bonus: true,
+                ),
+                LetterBox(
+                  bonus: true,
+                ),
+              ],
+            ),
           ),
-          const LetterBox(
-            total: true,
-          ),
-        ],
+        ),
       ),
     );
   }
