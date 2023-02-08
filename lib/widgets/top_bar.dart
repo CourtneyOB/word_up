@@ -6,21 +6,26 @@ import 'package:auto_size_text/auto_size_text.dart';
 class TopBar extends StatelessWidget {
   const TopBar({Key? key}) : super(key: key);
 
+  final int roundNumber = 1;
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: screenHeight(context) * 0.1,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0),
+      child: Column(
         children: [
-          Expanded(
-            flex: 1,
-            child: Container(),
-          ),
-          const Expanded(
-            flex: 6,
-            child: AutoSizeText(
+          SizedBox(
+            height: screenHeight(context) * 0.1,
+            child: const AutoSizeText(
               'WORD UP',
+              style: kTitleFont,
+              textAlign: TextAlign.center,
+            ),
+          ),
+          SizedBox(
+            height: screenHeight(context) * 0.04,
+            child: AutoSizeText(
+              'Round $roundNumber',
               style: kTitleFont,
               textAlign: TextAlign.center,
             ),
