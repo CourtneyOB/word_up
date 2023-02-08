@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:word_up/constants.dart';
 import 'package:word_up/widgets/backing_container.dart';
 import 'package:word_up/widgets/stateless_boxes/dice_box.dart';
 
@@ -28,11 +29,11 @@ class DiceDisplay extends StatelessWidget {
                   letter: 'P',
                 ),
                 DiceBox(
-                  color: Colors.yellow,
+                  color: kYellowDiceColour,
                   letter: 'F',
                 ),
                 DiceBox(
-                  color: Colors.orange,
+                  color: kOrangeDiceColour,
                   letter: 'Z',
                 ),
               ],

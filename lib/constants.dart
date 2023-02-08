@@ -10,6 +10,8 @@ const kTitleFont = TextStyle(
 const kBackgroundColour = Color(0XFFe8dccd);
 const kBorderColour = Color(0XFF302725);
 const kHighlightColour = Color(0XFFf7cd00);
+const kYellowDiceColour = Colors.yellow;
+const kOrangeDiceColour = Colors.orange;
 
 const String kCrossImage = 'assets/img/cross.png';
 
