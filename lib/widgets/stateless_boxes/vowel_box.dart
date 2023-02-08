@@ -12,7 +12,6 @@ class VowelBox extends StatelessWidget {
   }) : super(key: key);
 
   final String letter;
-  //TODO: make mutually exclusive
   final bool negative;
   final bool multi;
 
@@ -20,40 +19,40 @@ class VowelBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return BoxBacking(
       width: kVowelBoxWidth,
-      child: Stack(children: [
-        multi
-            ? Stack(
-                children: const [
-                  Align(
-                    alignment: Alignment(0, -0.8),
-                    child: Text('A'),
-                  ),
-                  Align(
-                    alignment: Alignment(0.65, -0.25),
-                    child: Text('E'),
-                  ),
-                  Align(
-                    alignment: Alignment(0.4, 0.65),
-                    child: Text('I'),
-                  ),
-                  Align(
-                    alignment: Alignment(-0.4, 0.65),
-                    child: Text('O'),
-                  ),
-                  Align(
-                    alignment: Alignment(-0.65, -0.25),
-                    child: Text('U'),
-                  ),
-                ],
-              )
-            : Center(
+      child: multi
+          ? Stack(
+              children: const [
+                Align(
+                  alignment: Alignment(0, -0.8),
+                  child: Text('A'),
+                ),
+                Align(
+                  alignment: Alignment(0.65, -0.25),
+                  child: Text('E'),
+                ),
+                Align(
+                  alignment: Alignment(0.4, 0.65),
+                  child: Text('I'),
+                ),
+                Align(
+                  alignment: Alignment(-0.4, 0.65),
+                  child: Text('O'),
+                ),
+                Align(
+                  alignment: Alignment(-0.65, -0.25),
+                  child: Text('U'),
+                ),
+              ],
+            )
+          : Stack(children: [
+              Center(
                 child: AutoSizeText(
                   letter,
                   style: kTitleFont,
                 ),
               ),
-        if (negative) const Image(image: AssetImage(kCrossImage)),
-      ]),
+              if (negative) const Image(image: AssetImage(kCrossImage)),
+            ]),
     );
   }
 }
