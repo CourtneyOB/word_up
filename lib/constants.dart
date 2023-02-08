@@ -9,6 +9,9 @@ const kTitleFont = TextStyle(
 
 const kBackgroundColour = Color(0XFFe8dccd);
 const kBorderColour = Color(0XFF302725);
-const kSidebarColour = Color(0XFFf7cd00);
+const kHighlightColour = Color(0XFFf7cd00);
 
 const String kCrossImage = 'assets/img/cross.png';
+
+const double kDiceBoxWidth = 70.0;
+const double kVowelBoxWidth = 70.0;

@@ -45,7 +45,7 @@ class _CharacterBoxState extends State<CharacterBox> {
     return BoxBacking(
       width: 55,
       padding: 2.0,
-      color: widget.focusNode.hasFocus ? Colors.yellow : Colors.white,
+      color: widget.focusNode.hasFocus ? kHighlightColour : Colors.white,
       child: Stack(
         children: [
           Padding(
