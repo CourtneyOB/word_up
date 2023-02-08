@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/widgets/backing_container.dart';
-import 'package:word_up/widgets/boxes/dice_box.dart';
+import 'package:word_up/widgets/stateless_boxes/dice_box.dart';
 
 class DiceDisplay extends StatelessWidget {
   const DiceDisplay({Key? key}) : super(key: key);

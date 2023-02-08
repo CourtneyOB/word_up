@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:word_up/widgets/boxes/box_backing.dart';
+import 'package:word_up/widgets/stateless_boxes/box_backing.dart';
 
 class VowelBox extends StatelessWidget {
   const VowelBox({
