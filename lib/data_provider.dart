@@ -28,7 +28,22 @@ class DataProvider extends StateNotifier<List<Round>> {
     }
   }
 
+  void submitWord(String word) {
+    //TODO: calculate score
+    state = [
+      for (Round round in state)
+        if (round == state.last) round.copyWith(entry: word) else round,
+    ];
+  }
+
   void restart() {
     state = [];
+  }
+
+  void printRounds() {
+    for (Round round in state) {
+      print(
+          'Dice: ${round.diceRoll}, Entry: ${round.entry}, Score: ${round.score}');
+    }
   }
 }

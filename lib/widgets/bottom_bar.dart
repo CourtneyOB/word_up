@@ -35,7 +35,7 @@ class BottomBar extends ConsumerWidget {
               style: TextStyle(color: Colors.white),
             ),
           ),
-        )
+        ),
       ],
     );
   }

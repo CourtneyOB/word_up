@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:word_up/main.dart';
 import 'package:word_up/widgets/backing_container.dart';
 import 'package:word_up/widgets/custom_text_field/character_box.dart';
 
-class SingleCharacterTextField extends StatefulWidget {
+class SingleCharacterTextField extends ConsumerStatefulWidget {
   const SingleCharacterTextField({Key? key, this.sideBarLetter})
       : super(key: key);
 
   final String? sideBarLetter;
 
   @override
-  State<SingleCharacterTextField> createState() =>
+  ConsumerState<SingleCharacterTextField> createState() =>
       _SingleCharacterTextFieldState();
 }
 
-class _SingleCharacterTextFieldState extends State<SingleCharacterTextField> {
+class _SingleCharacterTextFieldState
+    extends ConsumerState<SingleCharacterTextField> {
   List<String> entry = ['', '', '', '', '', ''];
   List<TextEditingController> controllers = [];
   List<FocusNode> focusNodes = [];
@@ -78,10 +81,35 @@ class _SingleCharacterTextFieldState extends State<SingleCharacterTextField> {
                         }
                       }
                       entry[index] = controllers[index].text;
-                      print('current code = $entry');
                     },
                   );
                 }),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: BackingContainer(
+              child: IconButton(
+                onPressed: () {
+                  //convert list of characters into string
+                  String word = '';
+                  for (String character in entry) {
+                    word = word + character;
+                  }
+                  //submit to the game data
+                  ref.read(dataProvider.notifier).submitWord(word);
+                  //TODO: calculate score
+                  //TODO: move this to the next round function
+                  for (TextEditingController controller in controllers) {
+                    controller.value = TextEditingValue.empty;
+                  }
+                  entry = ['', '', '', '', '', ''];
+                },
+                icon: const Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
