@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:word_up/widgets/stateless_boxes/box_backing.dart';
 
 class VowelBox extends StatelessWidget {
@@ -46,9 +45,11 @@ class VowelBox extends StatelessWidget {
             )
           : Stack(children: [
               Center(
-                child: AutoSizeText(
-                  letter,
-                  style: kTitleFont,
+                child: FittedBox(
+                  child: Text(
+                    letter,
+                    style: kTitleFont,
+                  ),
                 ),
               ),
               if (negative) const Image(image: AssetImage(kCrossImage)),

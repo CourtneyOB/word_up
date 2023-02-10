@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
 import 'package:word_up/main.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({Key? key}) : super(key: key);
@@ -16,18 +15,22 @@ class TopBar extends StatelessWidget {
         children: [
           SizedBox(
             height: screenHeight(context) * 0.1,
-            child: const AutoSizeText(
-              'WORD UP',
-              style: kTitleFont,
-              textAlign: TextAlign.center,
+            child: const FittedBox(
+              child: Text(
+                'WORD UP',
+                style: kTitleFont,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
           SizedBox(
             height: screenHeight(context) * 0.04,
-            child: AutoSizeText(
-              'Round $roundNumber',
-              style: kTitleFont,
-              textAlign: TextAlign.center,
+            child: FittedBox(
+              child: Text(
+                'Round $roundNumber',
+                style: kTitleFont,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ],
