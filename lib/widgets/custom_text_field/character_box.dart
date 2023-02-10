@@ -42,7 +42,7 @@ class _CharacterBoxState extends State<CharacterBox> {
   @override
   Widget build(BuildContext context) {
     return BoxBacking(
-      width: 55,
+      width: kTextFieldBoxWidth,
       padding: 2.0,
       color: widget.focusNode.hasFocus ? kHighlightColour : Colors.white,
       child: Stack(

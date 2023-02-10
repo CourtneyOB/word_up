@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
+import 'package:word_up/main.dart';
 import 'package:word_up/widgets/bottom_bar.dart';
 import 'package:word_up/widgets/dice_display.dart';
 import 'package:word_up/widgets/custom_text_field/single_character_text_field.dart';
@@ -31,11 +32,11 @@ class MainScreen extends StatelessWidget {
                         DiceDisplay(),
                         VowelDisplay(),
                         SingleCharacterTextField(),
+                        BottomBar(),
                       ],
                     ),
                   ),
                 ),
-                const BottomBar(),
               ],
             ),
           ),

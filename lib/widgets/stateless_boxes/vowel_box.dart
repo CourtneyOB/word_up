@@ -5,11 +5,13 @@ import 'package:word_up/widgets/stateless_boxes/box_backing.dart';
 class VowelBox extends StatelessWidget {
   const VowelBox({
     Key? key,
+    required this.width,
     this.letter = '',
     this.negative = false,
     this.multi = false,
   }) : super(key: key);
 
+  final double width;
   final String letter;
   final bool negative;
   final bool multi;
@@ -17,7 +19,7 @@ class VowelBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BoxBacking(
-      width: kVowelBoxWidth,
+      width: width,
       child: multi
           ? Stack(
               children: const [

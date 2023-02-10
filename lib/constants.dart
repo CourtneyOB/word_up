@@ -17,3 +17,5 @@ const String kCrossImage = 'assets/img/cross.png';
 
 const double kDiceBoxWidth = 70.0;
 const double kVowelBoxWidth = 70.0;
+const double kTextFieldBoxWidth = 55.0;
+const double kScoreCardBoxWidth = 45.0;
