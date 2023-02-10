@@ -9,14 +9,17 @@ class ScoreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: screenHeight(context) * 0.85,
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Text('SCORECARD'),
+              const Text(
+                'SCORECARD',
+                style: TextStyle(fontSize: 40.0),
+              ),
               IntrinsicHeight(
                 //Vertical divider won't show unless wrapped in intrinsic height
                 child: Row(
@@ -79,7 +82,7 @@ class ScoreCard extends StatelessWidget {
                     ),
                     Column(
                       children: List.generate(11, (index) {
-                        return ScoreCardRow();
+                        return const ScoreCardRow();
                       }),
                     ),
                   ],

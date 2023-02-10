@@ -14,7 +14,7 @@ class BottomBar extends StatelessWidget {
           style: ElevatedButton.styleFrom(backgroundColor: kBorderColour),
           onPressed: () => _showScorecard(context),
           child: const Text(
-            'SCORE',
+            'SCORECARD',
             style: TextStyle(color: Colors.white),
           ),
         )

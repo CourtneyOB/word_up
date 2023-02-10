@@ -7,7 +7,7 @@ class LetterBox extends StatelessWidget {
   const LetterBox({
     Key? key,
     required this.width,
-    this.letter = '',
+    this.letter = ' ',
     this.colour = Colors.white,
     this.decor,
   }) : super(key: key);
@@ -58,6 +58,31 @@ class LetterBox extends StatelessWidget {
               ),
               if (decor == BoxDecor.negative)
                 const Image(image: AssetImage(kCrossImage)),
+              //TODO: paddings need to be responsive to box size
+              if (decor == BoxDecor.bonus)
+                const Padding(
+                  padding: EdgeInsets.only(left: 18.0, right: 8.0),
+                  child: FittedBox(
+                    child: Text(
+                      '+1',
+                      textAlign: TextAlign.right,
+                      style: kTitleFont,
+                      maxLines: 1,
+                    ),
+                  ),
+                ),
+              if (decor == BoxDecor.total)
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: FittedBox(
+                    child: Text(
+                      'TOTAL',
+                      textAlign: TextAlign.right,
+                      style: kTitleFont,
+                      maxLines: 1,
+                    ),
+                  ),
+                ),
             ]),
     );
   }
