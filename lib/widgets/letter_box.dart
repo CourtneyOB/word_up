@@ -3,38 +3,45 @@ import 'package:word_up/constants.dart';
 import 'package:word_up/widgets/box_backing.dart';
 import 'package:word_up/main.dart';
 import 'package:word_up/widgets/vowel_wheel.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LetterBox extends StatefulWidget {
-  const LetterBox({
-    Key? key,
-    required this.width,
-    this.letter = ' ',
-    this.colour = Colors.white,
-    this.decor,
-    this.onPressed,
-  }) : super(key: key);
+class LetterBox extends ConsumerStatefulWidget {
+  const LetterBox(
+      {Key? key,
+      required this.width,
+      this.letter = ' ',
+      this.colour = Colors.white,
+      this.decor,
+      this.onPressed,
+      this.validate = false})
+      : super(key: key);
 
   final double width;
   final String letter;
   final Color colour;
   final BoxDecor? decor;
+  final bool validate;
   final VoidCallback? onPressed;
 
   @override
-  State<LetterBox> createState() => _LetterBoxState();
+  ConsumerState<LetterBox> createState() => _LetterBoxState();
 }
 
-class _LetterBoxState extends State<LetterBox> {
-  bool inactive = false;
-
+class _LetterBoxState extends ConsumerState<LetterBox> {
   @override
   Widget build(BuildContext context) {
+    bool inactive = false;
+    if (widget.validate) {
+      if (ref.watch(dataProvider).isNotEmpty) {
+        inactive = ref.watch(dataProvider).last.entry.contains(widget.letter);
+      }
+    }
     return BoxBacking(
       width: widget.width,
       color: widget.colour,
       child: Stack(
         children: [
-          if (inactive)
+          if (inactive && widget.decor != BoxDecor.multiLetter)
             Container(
               //overlay for greying out
               decoration: const BoxDecoration(

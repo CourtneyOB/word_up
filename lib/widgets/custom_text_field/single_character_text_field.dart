@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:word_up/main.dart';
 import 'package:word_up/widgets/backing_container.dart';
 import 'package:word_up/widgets/custom_text_field/character_box.dart';
+import 'package:word_up/widgets/letter_box.dart';
+import 'package:word_up/constants.dart';
 
 class SingleCharacterTextField extends ConsumerStatefulWidget {
   const SingleCharacterTextField({Key? key, this.sideBarLetter})
@@ -18,6 +20,7 @@ class SingleCharacterTextField extends ConsumerStatefulWidget {
 class _SingleCharacterTextFieldState
     extends ConsumerState<SingleCharacterTextField> {
   List<String> entry = ['', '', '', '', '', ''];
+  String word = '';
   List<TextEditingController> controllers = [];
   List<FocusNode> focusNodes = [];
 
@@ -81,6 +84,12 @@ class _SingleCharacterTextFieldState
                         }
                       }
                       entry[index] = controllers[index].text;
+                      //convert list of characters into string
+                      word = '';
+                      for (String character in entry) {
+                        word = word + character;
+                      }
+                      ref.read(dataProvider.notifier).submitWord(word);
                     },
                   );
                 }),
@@ -92,11 +101,6 @@ class _SingleCharacterTextFieldState
             child: BackingContainer(
               child: IconButton(
                 onPressed: () {
-                  //convert list of characters into string
-                  String word = '';
-                  for (String character in entry) {
-                    word = word + character;
-                  }
                   //submit to the game data
                   ref.read(dataProvider.notifier).submitWord(word);
                   //TODO: calculate score
@@ -105,6 +109,7 @@ class _SingleCharacterTextFieldState
                     controller.value = TextEditingValue.empty;
                   }
                   entry = ['', '', '', '', '', ''];
+                  word = '';
                 },
                 icon: const Icon(
                   Icons.arrow_forward_ios,

@@ -3,66 +3,49 @@ import 'package:word_up/constants.dart';
 import 'package:word_up/widgets/letter_box.dart';
 import 'package:word_up/main.dart';
 
-class VowelDisplay extends StatelessWidget {
+class VowelDisplay extends StatefulWidget {
   const VowelDisplay({Key? key}) : super(key: key);
 
+  @override
+  State<VowelDisplay> createState() => _VowelDisplayState();
+}
+
+class _VowelDisplayState extends State<VowelDisplay> {
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(16.0),
         child: Wrap(
           alignment: WrapAlignment.center,
-          children: const [
-            LetterBox(
+          children: List.generate(11, (index) {
+            BoxDecor? decor;
+            List<String> letters = [
+              'A',
+              'E',
+              'I',
+              'O',
+              'U',
+              'A',
+              'E',
+              'I',
+              'O',
+              'U',
+              ''
+            ];
+            if (index > 4) {
+              if (index == 10) {
+                decor = BoxDecor.multiLetter;
+              } else {
+                decor = BoxDecor.negative;
+              }
+            }
+            return LetterBox(
               width: kVowelBoxWidth,
-              letter: 'A',
-            ),
-            LetterBox(
-              width: kVowelBoxWidth,
-              letter: 'E',
-            ),
-            LetterBox(
-              width: kVowelBoxWidth,
-              letter: 'I',
-            ),
-            LetterBox(
-              width: kVowelBoxWidth,
-              letter: 'O',
-            ),
-            LetterBox(
-              width: kVowelBoxWidth,
-              letter: 'U',
-            ),
-            LetterBox(
-              width: kVowelBoxWidth,
-              decor: BoxDecor.negative,
-              letter: 'A',
-            ),
-            LetterBox(
-              width: kVowelBoxWidth,
-              decor: BoxDecor.negative,
-              letter: 'E',
-            ),
-            LetterBox(
-              width: kVowelBoxWidth,
-              decor: BoxDecor.negative,
-              letter: 'I',
-            ),
-            LetterBox(
-              width: kVowelBoxWidth,
-              decor: BoxDecor.negative,
-              letter: 'O',
-            ),
-            LetterBox(
-              width: kVowelBoxWidth,
-              decor: BoxDecor.negative,
-              letter: 'U',
-            ),
-            LetterBox(
-              width: kVowelBoxWidth,
-              decor: BoxDecor.multiLetter,
-            ),
-          ],
+              letter: letters[index],
+              decor: decor,
+              validate: true,
+            );
+          }),
         ));
   }
 }
