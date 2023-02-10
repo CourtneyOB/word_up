@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:word_up/constants.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:word_up/widgets/stateless_boxes/box_backing.dart';
 
 class CharacterBox extends StatefulWidget {
@@ -69,11 +68,13 @@ class _CharacterBoxState extends State<CharacterBox> {
           if (widget.bonus)
             const Padding(
               padding: EdgeInsets.only(left: 24.0, right: 8.0),
-              child: AutoSizeText(
-                '+1',
-                textAlign: TextAlign.right,
-                style: kTitleFont,
-                maxLines: 1,
+              child: FittedBox(
+                child: Text(
+                  '+1',
+                  textAlign: TextAlign.right,
+                  style: kTitleFont,
+                  maxLines: 1,
+                ),
               ),
             ),
         ],
