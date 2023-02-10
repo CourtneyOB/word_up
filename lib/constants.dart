@@ -12,6 +12,7 @@ const kBorderColour = Color(0XFF302725);
 const kHighlightColour = Color(0XFFf7cd00);
 const kYellowDiceColour = Colors.yellow;
 const kOrangeDiceColour = Colors.orange;
+const kGreyedOutColour = Color(0XE6b8b8b8);
 
 const String kCrossImage = 'assets/img/cross.png';
 

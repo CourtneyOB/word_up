@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:word_up/constants.dart';
-import 'package:word_up/widgets/stateless_boxes/box_backing.dart';
+import 'package:word_up/widgets/box_backing.dart';
 
 class CharacterBox extends StatefulWidget {
   const CharacterBox(

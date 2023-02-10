@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
-import 'package:word_up/widgets/stateless_boxes/letter_box.dart';
+import 'package:word_up/widgets/letter_box.dart';
 import 'package:word_up/main.dart';
 
 class VowelDisplay extends StatelessWidget {

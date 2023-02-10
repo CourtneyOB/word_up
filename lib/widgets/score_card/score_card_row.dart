@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
 import 'package:word_up/main.dart';
-import 'package:word_up/widgets/stateless_boxes/letter_box.dart';
+import 'package:word_up/widgets/letter_box.dart';
 
 class ScoreCardRow extends StatelessWidget {
   const ScoreCardRow({Key? key}) : super(key: key);
