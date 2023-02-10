@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:word_up/constants.dart';
 import 'package:word_up/main.dart';
 
-class TopBar extends StatelessWidget {
+class TopBar extends ConsumerWidget {
   const TopBar({Key? key}) : super(key: key);
 
   final int roundNumber = 1;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: Column(
@@ -27,7 +28,7 @@ class TopBar extends StatelessWidget {
             height: screenHeight(context) * 0.04,
             child: FittedBox(
               child: Text(
-                'Round $roundNumber',
+                'Round ${ref.watch(dataProvider).length}',
                 style: kTitleFont,
                 textAlign: TextAlign.center,
               ),
