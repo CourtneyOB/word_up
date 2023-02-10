@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
 import 'package:word_up/widgets/backing_container.dart';
-import 'package:word_up/widgets/stateless_boxes/dice_box.dart';
+import 'package:word_up/widgets/stateless_boxes/letter_box.dart';
 
 class DiceDisplay extends StatelessWidget {
   const DiceDisplay({Key? key}) : super(key: key);
@@ -16,24 +16,30 @@ class DiceDisplay extends StatelessWidget {
             child: Wrap(
               alignment: WrapAlignment.center,
               children: const [
-                DiceBox(
+                LetterBox(
+                  width: kDiceBoxWidth,
                   letter: 'N',
                 ),
-                DiceBox(
+                LetterBox(
+                  width: kDiceBoxWidth,
                   letter: 'T',
                 ),
-                DiceBox(
+                LetterBox(
+                  width: kDiceBoxWidth,
                   letter: 'D',
                 ),
-                DiceBox(
+                LetterBox(
+                  width: kDiceBoxWidth,
                   letter: 'P',
                 ),
-                DiceBox(
-                  color: kYellowDiceColour,
+                LetterBox(
+                  width: kDiceBoxWidth,
+                  colour: kYellowDiceColour,
                   letter: 'F',
                 ),
-                DiceBox(
-                  color: kOrangeDiceColour,
+                LetterBox(
+                  width: kDiceBoxWidth,
+                  colour: kOrangeDiceColour,
                   letter: 'Z',
                 ),
               ],

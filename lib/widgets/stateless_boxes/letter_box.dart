@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
 import 'package:word_up/widgets/stateless_boxes/box_backing.dart';
+import 'package:word_up/main.dart';
 
-class VowelBox extends StatelessWidget {
-  const VowelBox({
+class LetterBox extends StatelessWidget {
+  const LetterBox({
     Key? key,
     required this.width,
     this.letter = '',
-    this.negative = false,
-    this.multi = false,
+    this.colour = Colors.white,
+    this.decor,
   }) : super(key: key);
 
   final double width;
   final String letter;
-  final bool negative;
-  final bool multi;
+  final Color colour;
+  final BoxDecor? decor;
 
   @override
   Widget build(BuildContext context) {
     return BoxBacking(
       width: width,
-      child: multi
+      color: colour,
+      child: decor == BoxDecor.multiLetter
           ? Stack(
               children: const [
                 Align(
@@ -54,7 +56,8 @@ class VowelBox extends StatelessWidget {
                   ),
                 ),
               ),
-              if (negative) const Image(image: AssetImage(kCrossImage)),
+              if (decor == BoxDecor.negative)
+                const Image(image: AssetImage(kCrossImage)),
             ]),
     );
   }

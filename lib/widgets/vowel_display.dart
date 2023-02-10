@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
-import 'package:word_up/widgets/stateless_boxes/vowel_box.dart';
+import 'package:word_up/widgets/stateless_boxes/letter_box.dart';
+import 'package:word_up/main.dart';
 
 class VowelDisplay extends StatelessWidget {
   const VowelDisplay({Key? key}) : super(key: key);
@@ -12,54 +13,54 @@ class VowelDisplay extends StatelessWidget {
         child: Wrap(
           alignment: WrapAlignment.center,
           children: const [
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
               letter: 'A',
             ),
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
               letter: 'E',
             ),
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
               letter: 'I',
             ),
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
               letter: 'O',
             ),
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
               letter: 'U',
             ),
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
-              negative: true,
+              decor: BoxDecor.negative,
               letter: 'A',
             ),
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
-              negative: true,
+              decor: BoxDecor.negative,
               letter: 'E',
             ),
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
-              negative: true,
+              decor: BoxDecor.negative,
               letter: 'I',
             ),
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
-              negative: true,
+              decor: BoxDecor.negative,
               letter: 'O',
             ),
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
-              negative: true,
+              decor: BoxDecor.negative,
               letter: 'U',
             ),
-            VowelBox(
+            LetterBox(
               width: kVowelBoxWidth,
-              multi: true,
+              decor: BoxDecor.multiLetter,
             ),
           ],
         ));

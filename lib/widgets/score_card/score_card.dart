@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
 import 'package:word_up/main.dart';
 import 'package:word_up/widgets/score_card/score_card_row.dart';
-import 'package:word_up/widgets/stateless_boxes/vowel_box.dart';
+import 'package:word_up/widgets/stateless_boxes/letter_box.dart';
 
 class ScoreCard extends StatelessWidget {
   const ScoreCard({Key? key}) : super(key: key);
@@ -22,54 +22,54 @@ class ScoreCard extends StatelessWidget {
                 child: Row(
                   children: [
                     Column(children: const [
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
                         letter: 'A',
                       ),
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
                         letter: 'E',
                       ),
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
                         letter: 'I',
                       ),
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
                         letter: 'O',
                       ),
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
                         letter: 'U',
                       ),
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
-                        negative: true,
+                        decor: BoxDecor.negative,
                         letter: 'A',
                       ),
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
-                        negative: true,
+                        decor: BoxDecor.negative,
                         letter: 'E',
                       ),
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
-                        negative: true,
+                        decor: BoxDecor.negative,
                         letter: 'I',
                       ),
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
-                        negative: true,
+                        decor: BoxDecor.negative,
                         letter: 'O',
                       ),
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
-                        negative: true,
+                        decor: BoxDecor.negative,
                         letter: 'U',
                       ),
-                      VowelBox(
+                      LetterBox(
                         width: kScoreCardBoxWidth,
-                        multi: true,
+                        decor: BoxDecor.multiLetter,
                       ),
                     ]),
                     const VerticalDivider(
