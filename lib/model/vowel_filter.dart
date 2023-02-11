@@ -1,9 +1,10 @@
 import 'package:word_up/main.dart';
 
 class VowelFilter {
-  VowelType vowelType;
   String value;
+  bool isPositive;
+  bool isWildcard;
   bool inactive;
 
-  VowelFilter(this.vowelType, this.value, this.inactive);
+  VowelFilter(this.value, this.isPositive, this.isWildcard, this.inactive);
 }
