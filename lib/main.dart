@@ -7,6 +7,9 @@ import 'package:word_up/screens/main_screen.dart';
 import 'package:collection/collection.dart';
 import 'package:word_up/game_data.dart';
 
+//TODO: only allow consonants on dice roll
+//TODO: calculate score
+
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
