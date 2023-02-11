@@ -6,7 +6,11 @@ import 'package:word_up/model/round.dart';
 import 'dart:math';
 
 class RoundListProvider extends StateNotifier<List<Round>> {
-  RoundListProvider() : super([]);
+  RoundListProvider() : super([]) {
+    if (state.isEmpty) {
+      newRound();
+    }
+  }
 
   final random = Random();
 

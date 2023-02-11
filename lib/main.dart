@@ -17,7 +17,6 @@ final roundListProvider = StateNotifierProvider<RoundListProvider, List<Round>>(
     (ref) => RoundListProvider());
 final vowelFilterDisplayProvider = Provider<List<VowelFilter>>((ref) {
   String word = ref.watch(wordEntryProvider);
-  //TODO: start round 1 on initialise
   Round currentRound = ref.watch(roundListProvider).last;
   List<VowelFilter> list = [];
   for (var value in VowelType.values) {
