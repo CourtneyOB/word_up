@@ -38,7 +38,6 @@ final roundListProvider = StateNotifierProvider<RoundListProvider, List<Round>>(
     (ref) => RoundListProvider());
 final vowelFilterDisplayProvider = Provider<List<VowelFilter>>((ref) {
   String word = ref.watch(wordEntryProvider);
-  //TODO: add filter depending on whether used already in previous round
   List<Round> rounds = ref.watch(roundListProvider);
   return filterVowels(word, rounds);
 });
@@ -65,11 +64,11 @@ List<VowelFilter> filterVowels(String word, List<Round> rounds) {
         inactive = true;
       }
     }
+    //filter according to if a vowel type has already been used
     if (rounds.firstWhereOrNull((element) => element.vowelType == value) !=
         null) {
       inactive = true;
     }
-    //filter according to if a vowel type has already been used
     list.add(VowelFilter(type: value, inactive: inactive));
   }
   return list;
