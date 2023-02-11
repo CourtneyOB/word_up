@@ -5,13 +5,15 @@ class BoxBacking extends StatelessWidget {
       {Key? key,
       required this.width,
       this.padding = 3.0,
-      this.color = Colors.white,
+      this.colour = Colors.white,
+      this.border = false,
       this.child})
       : super(key: key);
 
   final double width;
   final double padding;
-  final Color color;
+  final Color colour;
+  final bool border;
   final Widget? child;
 
   @override
@@ -24,8 +26,10 @@ class BoxBacking extends StatelessWidget {
           aspectRatio: 1,
           child: Container(
             decoration: BoxDecoration(
-                color: color,
-                borderRadius: const BorderRadius.all(Radius.circular(10))),
+                color: colour,
+                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                border:
+                    border ? Border.all(color: Colors.blue, width: 2.0) : null),
             child: child,
           ),
         ),

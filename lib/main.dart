@@ -41,29 +41,28 @@ final vowelFilterDisplayProvider = Provider<List<VowelFilter>>((ref) {
   return filterVowels(word);
 });
 final wordEntryProvider = StateProvider<String>((ref) => '');
+final selectedVowelProvider = StateProvider<VowelType?>((ref) => null);
 
 List<VowelFilter> filterVowels(String word) {
   List<VowelFilter> list = [];
   List<String> vowels = ['A', 'E', 'I', 'O', 'U'];
-  for (int i = 0; i < 5; i++) {
+
+  for (var value in VowelType.values) {
     bool inactive = false;
-    List<String> otherVowels = List.from(vowels);
-    otherVowels.removeAt(i);
-    for (String vowel in otherVowels) {
-      if (word.contains(vowel)) {
+    if (value.isPositive() && value != VowelType.wildcard) {
+      List<String> otherVowels = List.from(vowels);
+      otherVowels.remove(value.stringValue());
+      for (String vowel in otherVowels) {
+        if (word.contains(vowel)) {
+          inactive = true;
+        }
+      }
+    } else if (!value.isPositive()) {
+      if (word.contains(value.stringValue())) {
         inactive = true;
       }
     }
-    list.add(VowelFilter(value: vowels[i], inactive: inactive));
+    list.add(VowelFilter(type: value, inactive: inactive));
   }
-  for (int i = 0; i < 5; i++) {
-    bool inactive = false;
-    if (word.contains(vowels[i])) {
-      inactive = true;
-    }
-    list.add(
-        VowelFilter(value: vowels[i], isPositive: false, inactive: inactive));
-  }
-  list.add(VowelFilter(isWildcard: true));
   return list;
 }

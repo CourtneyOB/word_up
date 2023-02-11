@@ -1,4 +1,5 @@
 import 'package:word_up/model/dice_value.dart';
+import 'package:word_up/model/vowel_filter.dart';
 
 class Round {
   List<DiceValue> diceRoll;
@@ -10,7 +11,11 @@ class Round {
         entry = '';
   Round.fromRound(this.diceRoll, this.entry, this.score);
 
-  Round copyWith({List<DiceValue>? diceRoll, String? entry, int? score}) {
+  Round copyWith(
+      {List<DiceValue>? diceRoll,
+      String? entry,
+      VowelFilter? assignedVowel,
+      int? score}) {
     return Round.fromRound(
       diceRoll ?? this.diceRoll,
       entry ?? this.entry,

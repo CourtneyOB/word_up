@@ -4,27 +4,36 @@ import 'package:word_up/main.dart';
 import 'package:word_up/widgets/letter_box.dart';
 
 class ScoreCardRow extends StatelessWidget {
-  const ScoreCardRow({Key? key}) : super(key: key);
+  const ScoreCardRow({Key? key, this.word = ''}) : super(key: key);
+
+  final String word;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(7, (index) {
+        String content = ' ';
+        if (word.length > index) {
+          content = word[index];
+        }
         if (index > 3) {
           if (index == 6) {
-            return const LetterBox(
+            return LetterBox(
               width: kScoreCardBoxWidth,
               decor: BoxDecor.total,
+              letter: content,
             );
           }
-          return const LetterBox(
+          return LetterBox(
             width: kScoreCardBoxWidth,
             decor: BoxDecor.bonus,
+            letter: content,
           );
         }
-        return const LetterBox(
+        return LetterBox(
           width: kScoreCardBoxWidth,
+          letter: content,
         );
       }),
     );

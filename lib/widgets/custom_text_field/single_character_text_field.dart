@@ -20,7 +20,6 @@ class SingleCharacterTextField extends ConsumerStatefulWidget {
 class _SingleCharacterTextFieldState
     extends ConsumerState<SingleCharacterTextField> {
   List<String> entry = ['', '', '', '', '', ''];
-  String word = '';
   List<TextEditingController> controllers = [];
   List<FocusNode> focusNodes = [];
 
@@ -56,6 +55,7 @@ class _SingleCharacterTextFieldState
                     controller: controllers[index],
                     focusNode: focusNodes[index],
                     onChanged: (value) {
+                      ref.read(selectedVowelProvider.notifier).state = null;
                       if (value.isNotEmpty) {
                         // this is a new character event
                         if (value.length > 1) {
@@ -85,11 +85,7 @@ class _SingleCharacterTextFieldState
                       }
                       entry[index] = controllers[index].text;
                       //convert list of characters into string
-                      word = '';
-                      for (String character in entry) {
-                        word = word + character;
-                      }
-                      ref.read(wordEntryProvider.notifier).state = word;
+                      convertCharacters();
                     },
                   );
                 }),
@@ -102,14 +98,19 @@ class _SingleCharacterTextFieldState
               child: IconButton(
                 onPressed: () {
                   //submit to the game data
-                  ref.read(roundListProvider.notifier).submitWord(word);
-                  //TODO: calculate score
-                  //TODO: move this to the next round function
+                  ref
+                      .read(roundListProvider.notifier)
+                      .submitWord(ref.read(wordEntryProvider));
                   for (TextEditingController controller in controllers) {
                     controller.value = TextEditingValue.empty;
                   }
                   entry = ['', '', '', '', '', ''];
-                  word = '';
+                  convertCharacters();
+                  for (FocusNode focus in focusNodes) {
+                    focus.unfocus();
+                  }
+                  ref.read(selectedVowelProvider.notifier).state = null;
+                  ref.read(roundListProvider.notifier).newRound();
                 },
                 icon: const Icon(
                   Icons.arrow_forward_ios,
@@ -132,5 +133,13 @@ class _SingleCharacterTextFieldState
       controller.dispose();
     }
     super.dispose();
+  }
+
+  void convertCharacters() {
+    String word = '';
+    for (String character in entry) {
+      word = word + character;
+    }
+    ref.read(wordEntryProvider.notifier).state = word;
   }
 }
