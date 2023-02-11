@@ -5,6 +5,8 @@ import 'package:word_up/model/dice.dart';
 import 'package:word_up/model/round.dart';
 import 'dart:math';
 
+import 'package:word_up/model/vowel_filter.dart';
+
 class RoundListProvider extends StateNotifier<List<Round>> {
   RoundListProvider() : super([]) {
     if (state.isEmpty) {
@@ -25,11 +27,14 @@ class RoundListProvider extends StateNotifier<List<Round>> {
     }
   }
 
-  void submitWord(String word) {
+  void submitWord(String word, VowelType vowelType) {
     //TODO: calculate score
     state = [
       for (Round round in state)
-        if (round == state.last) round.copyWith(entry: word) else round,
+        if (round == state.last)
+          round.copyWith(entry: word, vowelType: vowelType)
+        else
+          round,
     ];
   }
 

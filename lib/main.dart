@@ -4,6 +4,7 @@ import 'package:word_up/model/round.dart';
 import 'package:word_up/model/vowel_filter.dart';
 import 'package:word_up/providers/round_list_provider.dart';
 import 'package:word_up/screens/main_screen.dart';
+import 'package:collection/collection.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -38,17 +39,19 @@ final roundListProvider = StateNotifierProvider<RoundListProvider, List<Round>>(
 final vowelFilterDisplayProvider = Provider<List<VowelFilter>>((ref) {
   String word = ref.watch(wordEntryProvider);
   //TODO: add filter depending on whether used already in previous round
-  return filterVowels(word);
+  List<Round> rounds = ref.watch(roundListProvider);
+  return filterVowels(word, rounds);
 });
 final wordEntryProvider = StateProvider<String>((ref) => '');
 final selectedVowelProvider = StateProvider<VowelType?>((ref) => null);
 
-List<VowelFilter> filterVowels(String word) {
+List<VowelFilter> filterVowels(String word, List<Round> rounds) {
   List<VowelFilter> list = [];
   List<String> vowels = ['A', 'E', 'I', 'O', 'U'];
 
   for (var value in VowelType.values) {
     bool inactive = false;
+    //filter according to entered word
     if (value.isPositive() && value != VowelType.wildcard) {
       List<String> otherVowels = List.from(vowels);
       otherVowels.remove(value.stringValue());
@@ -62,6 +65,11 @@ List<VowelFilter> filterVowels(String word) {
         inactive = true;
       }
     }
+    if (rounds.firstWhereOrNull((element) => element.vowelType == value) !=
+        null) {
+      inactive = true;
+    }
+    //filter according to if a vowel type has already been used
     list.add(VowelFilter(type: value, inactive: inactive));
   }
   return list;

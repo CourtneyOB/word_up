@@ -29,7 +29,7 @@ class _VowelDisplayState extends ConsumerState<VowelDisplay> {
             if (vowelFilter.type == VowelType.wildcard) {
               decor = BoxDecor.multiLetter;
             }
-            if (vowelFilter.roundNumberUsed > 0 || vowelFilter.inactive) {
+            if (vowelFilter.inactive) {
               inactive = true;
             }
             if (ref.watch(selectedVowelProvider) == vowelFilter.type) {

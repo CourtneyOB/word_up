@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:word_up/constants.dart';
 import 'package:word_up/main.dart';
+import 'package:word_up/model/round.dart';
 import 'package:word_up/widgets/score_card/score_card_row.dart';
 import 'package:word_up/widgets/letter_box.dart';
 import 'package:word_up/model/vowel_filter.dart';
+import 'package:collection/collection.dart';
 
 class ScoreCard extends ConsumerWidget {
   const ScoreCard({Key? key}) : super(key: key);
@@ -50,17 +52,16 @@ class ScoreCard extends ConsumerWidget {
                     ),
                     Column(
                       children: List.generate(11, (index) {
-                        String word = '';
-                        int roundNumber = ref
-                            .read(vowelFilterDisplayProvider)[index]
-                            .roundNumberUsed;
-                        if (roundNumber > 0) {
-                          word = ref
-                              .read(roundListProvider)[roundNumber - 1]
-                              .entry;
-                        }
+                        //if there has been a word submitted for that vowel type, find it in round list
+                        Round? round = ref
+                            .read(roundListProvider)
+                            .firstWhereOrNull((element) =>
+                                element.vowelType ==
+                                ref
+                                    .read(vowelFilterDisplayProvider)[index]
+                                    .type);
                         return ScoreCardRow(
-                          word: word,
+                          word: round == null ? '' : round.entry,
                         );
                       }),
                     ),

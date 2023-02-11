@@ -55,6 +55,7 @@ class _SingleCharacterTextFieldState
                     controller: controllers[index],
                     focusNode: focusNodes[index],
                     onChanged: (value) {
+                      //deselect vowel
                       ref.read(selectedVowelProvider.notifier).state = null;
                       if (value.isNotEmpty) {
                         // this is a new character event
@@ -98,19 +99,21 @@ class _SingleCharacterTextFieldState
               child: IconButton(
                 onPressed: () {
                   //submit to the game data
-                  ref
-                      .read(roundListProvider.notifier)
-                      .submitWord(ref.read(wordEntryProvider));
-                  for (TextEditingController controller in controllers) {
-                    controller.value = TextEditingValue.empty;
+                  if (ref.read(selectedVowelProvider) != null) {
+                    ref.read(roundListProvider.notifier).submitWord(
+                        ref.read(wordEntryProvider),
+                        ref.read(selectedVowelProvider)!);
+                    for (TextEditingController controller in controllers) {
+                      controller.value = TextEditingValue.empty;
+                    }
+                    entry = ['', '', '', '', '', ''];
+                    convertCharacters();
+                    for (FocusNode focus in focusNodes) {
+                      focus.unfocus();
+                    }
+                    ref.read(selectedVowelProvider.notifier).state = null;
+                    ref.read(roundListProvider.notifier).newRound();
                   }
-                  entry = ['', '', '', '', '', ''];
-                  convertCharacters();
-                  for (FocusNode focus in focusNodes) {
-                    focus.unfocus();
-                  }
-                  ref.read(selectedVowelProvider.notifier).state = null;
-                  ref.read(roundListProvider.notifier).newRound();
                 },
                 icon: const Icon(
                   Icons.arrow_forward_ios,

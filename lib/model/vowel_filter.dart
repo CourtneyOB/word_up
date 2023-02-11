@@ -1,10 +1,8 @@
 class VowelFilter {
   VowelType type;
   bool inactive;
-  int roundNumberUsed;
 
-  VowelFilter(
-      {required this.type, this.inactive = false, this.roundNumberUsed = 0});
+  VowelFilter({required this.type, this.inactive = false});
 }
 
 enum VowelType { a, e, i, o, u, notA, notE, notI, notO, notU, wildcard }
