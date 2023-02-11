@@ -23,19 +23,6 @@ class BottomBar extends ConsumerWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: kBorderColour),
-            onPressed: () {
-              ref.read(roundListProvider.notifier).newRound();
-            },
-            child: const Text(
-              'ROLL',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
       ],
     );
   }
