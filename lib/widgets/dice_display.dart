@@ -18,12 +18,16 @@ class DiceDisplay extends ConsumerWidget {
             child: Wrap(
               alignment: WrapAlignment.center,
               children: List.generate(6, (index) {
-                if (ref.watch(dataProvider).isNotEmpty) {
+                if (ref.watch(roundListProvider).isNotEmpty) {
                   int score =
-                      ref.watch(dataProvider).last.diceRoll[index].score;
+                      ref.watch(roundListProvider).last.diceRoll[index].score;
                   return LetterBox(
                     width: kDiceBoxWidth,
-                    letter: ref.watch(dataProvider).last.diceRoll[index].letter,
+                    letter: ref
+                        .watch(roundListProvider)
+                        .last
+                        .diceRoll[index]
+                        .letter,
                     colour: score == 1
                         ? Colors.white
                         : score == 2

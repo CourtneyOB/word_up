@@ -28,7 +28,7 @@ class BottomBar extends ConsumerWidget {
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: kBorderColour),
             onPressed: () {
-              ref.read(dataProvider.notifier).newRound();
+              ref.read(roundListProvider.notifier).newRound();
             },
             child: const Text(
               'ROLL',

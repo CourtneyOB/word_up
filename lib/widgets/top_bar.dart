@@ -28,7 +28,7 @@ class TopBar extends ConsumerWidget {
             height: screenHeight(context) * 0.04,
             child: FittedBox(
               child: Text(
-                'Round ${ref.watch(dataProvider).length}',
+                'Round ${ref.watch(roundListProvider).length}',
                 style: kTitleFont,
                 textAlign: TextAlign.center,
               ),

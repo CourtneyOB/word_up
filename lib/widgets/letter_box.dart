@@ -32,8 +32,9 @@ class _LetterBoxState extends ConsumerState<LetterBox> {
   Widget build(BuildContext context) {
     bool inactive = false;
     if (widget.validate) {
-      if (ref.watch(dataProvider).isNotEmpty) {
-        inactive = ref.watch(dataProvider).last.entry.contains(widget.letter);
+      if (ref.watch(roundListProvider).isNotEmpty) {
+        inactive =
+            ref.watch(roundListProvider).last.entry.contains(widget.letter);
       }
     }
     return BoxBacking(

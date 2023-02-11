@@ -89,7 +89,7 @@ class _SingleCharacterTextFieldState
                       for (String character in entry) {
                         word = word + character;
                       }
-                      ref.read(dataProvider.notifier).submitWord(word);
+                      ref.read(wordEntryProvider.notifier).state = word;
                     },
                   );
                 }),
@@ -102,7 +102,7 @@ class _SingleCharacterTextFieldState
               child: IconButton(
                 onPressed: () {
                   //submit to the game data
-                  ref.read(dataProvider.notifier).submitWord(word);
+                  ref.read(roundListProvider.notifier).submitWord(word);
                   //TODO: calculate score
                   //TODO: move this to the next round function
                   for (TextEditingController controller in controllers) {
