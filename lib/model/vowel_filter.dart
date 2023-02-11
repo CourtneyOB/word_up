@@ -6,5 +6,9 @@ class VowelFilter {
   bool isWildcard;
   bool inactive;
 
-  VowelFilter(this.value, this.isPositive, this.isWildcard, this.inactive);
+  VowelFilter(
+      {this.value = ' ',
+      this.isPositive = true,
+      this.isWildcard = false,
+      this.inactive = false});
 }
