@@ -5,6 +5,7 @@ import 'package:word_up/model/vowel_filter.dart';
 import 'package:word_up/providers/round_list_provider.dart';
 import 'package:word_up/screens/main_screen.dart';
 import 'package:collection/collection.dart';
+import 'package:word_up/game_data.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -46,7 +47,6 @@ final selectedVowelProvider = StateProvider<VowelType?>((ref) => null);
 
 List<VowelFilter> filterVowels(String word, List<Round> rounds) {
   List<VowelFilter> list = [];
-  List<String> vowels = ['A', 'E', 'I', 'O', 'U'];
 
   for (var value in VowelType.values) {
     bool inactive = false;

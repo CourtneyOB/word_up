@@ -8,3 +8,5 @@ List<Dice> dice = [
   Dice(['J', 'W', 'P', 'V', 'M', 'N'], 2),
   Dice(['Z', 'X', 'Q', 'V', 'K', 'W'], 3),
 ];
+
+List<String> vowels = ['A', 'E', 'I', 'O', 'U'];
