@@ -3,9 +3,8 @@ import 'package:word_up/constants.dart';
 import 'package:word_up/widgets/box_backing.dart';
 import 'package:word_up/main.dart';
 import 'package:word_up/widgets/vowel_wheel.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LetterBox extends ConsumerStatefulWidget {
+class LetterBox extends StatelessWidget {
   const LetterBox(
       {Key? key,
       required this.width,
@@ -13,36 +12,24 @@ class LetterBox extends ConsumerStatefulWidget {
       this.colour = Colors.white,
       this.decor,
       this.onPressed,
-      this.validate = false})
+      this.inactive = false})
       : super(key: key);
 
   final double width;
   final String letter;
   final Color colour;
   final BoxDecor? decor;
-  final bool validate;
+  final bool inactive;
   final VoidCallback? onPressed;
 
   @override
-  ConsumerState<LetterBox> createState() => _LetterBoxState();
-}
-
-class _LetterBoxState extends ConsumerState<LetterBox> {
-  @override
   Widget build(BuildContext context) {
-    bool inactive = false;
-    if (widget.validate) {
-      if (ref.watch(roundListProvider).isNotEmpty) {
-        inactive =
-            ref.watch(roundListProvider).last.entry.contains(widget.letter);
-      }
-    }
     return BoxBacking(
-      width: widget.width,
-      color: widget.colour,
+      width: width,
+      color: colour,
       child: Stack(
         children: [
-          if (inactive && widget.decor != BoxDecor.multiLetter)
+          if (inactive)
             Container(
               //overlay for greying out
               decoration: const BoxDecoration(
@@ -51,21 +38,21 @@ class _LetterBoxState extends ConsumerState<LetterBox> {
               ),
             ),
           Container(
-            child: widget.decor == BoxDecor.multiLetter
+            child: decor == BoxDecor.multiLetter
                 ? const VowelWheel()
                 : Stack(children: [
                     Center(
                       child: FittedBox(
                         child: Text(
-                          widget.letter,
+                          letter,
                           style: kTitleFont,
                         ),
                       ),
                     ),
-                    if (widget.decor == BoxDecor.negative)
+                    if (decor == BoxDecor.negative)
                       const Image(image: AssetImage(kCrossImage)),
                     //TODO: paddings need to be responsive to box size
-                    if (widget.decor == BoxDecor.bonus)
+                    if (decor == BoxDecor.bonus)
                       const Padding(
                         padding: EdgeInsets.only(left: 18.0, right: 8.0),
                         child: FittedBox(
@@ -77,7 +64,7 @@ class _LetterBoxState extends ConsumerState<LetterBox> {
                           ),
                         ),
                       ),
-                    if (widget.decor == BoxDecor.total)
+                    if (decor == BoxDecor.total)
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: FittedBox(

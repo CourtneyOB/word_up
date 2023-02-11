@@ -17,13 +17,25 @@ final roundListProvider = StateNotifierProvider<RoundListProvider, List<Round>>(
     (ref) => RoundListProvider());
 final vowelFilterDisplayProvider = Provider<List<VowelFilter>>((ref) {
   String word = ref.watch(wordEntryProvider);
-  Round currentRound = ref.watch(roundListProvider).last;
+  //TODO: add filter depending on whether used already
+  //Round currentRound = ref.watch(roundListProvider).last;
   List<VowelFilter> list = [];
   for (var value in VowelType.values) {
-    list.add(VowelFilter(
-        value, value.toStringValue(), word.contains(value.toStringValue())));
+    bool inactive = false;
+    if (word.contains(value.toStringValue()) && !value.isPositive()) {
+      inactive = true;
+    } else if (value != VowelType.wildcard && value.isPositive()) {
+      List<String> vowels = ['A', 'E', 'I', 'O', 'U'];
+      vowels.remove(value.toStringValue());
+      for (String vowel in vowels) {
+        if (word.contains(vowel)) {
+          inactive = true;
+        }
+      }
+    }
+    list.add(VowelFilter(value, value.toStringValue(), inactive));
   }
-  return [];
+  return list;
 });
 final wordEntryProvider = StateProvider<String>((ref) => '');
 
