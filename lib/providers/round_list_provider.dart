@@ -28,10 +28,25 @@ class RoundListProvider extends StateNotifier<List<Round>> {
   }
 
   void submitWord(String word, VowelType vowelType) {
+    int score = 0;
+
+    List<DiceValue> diceValues = [...state.last.diceRoll];
+    for (int i = 0; i < word.length; i++) {
+      if (!vowels.contains(word[i])) {
+        DiceValue dice =
+            diceValues.firstWhere((value) => value.letter == word[i]);
+        score = score + dice.score;
+        diceValues.remove(dice);
+      }
+    }
+    if (word.length > 4) {
+      String subString = word.substring(4);
+      score = score + subString.length;
+    }
     state = [
       for (Round round in state)
         if (round == state.last)
-          round.copyWith(entry: word, vowelType: vowelType)
+          round.copyWith(entry: word, vowelType: vowelType, score: score)
         else
           round,
     ];

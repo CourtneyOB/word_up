@@ -4,9 +4,11 @@ import 'package:word_up/main.dart';
 import 'package:word_up/widgets/letter_box.dart';
 
 class ScoreCardRow extends StatelessWidget {
-  const ScoreCardRow({Key? key, this.word = ''}) : super(key: key);
+  const ScoreCardRow({Key? key, this.word = '', this.score = ' '})
+      : super(key: key);
 
   final String word;
+  final String score;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class ScoreCardRow extends StatelessWidget {
             return LetterBox(
               width: kScoreCardBoxWidth,
               decor: BoxDecor.total,
-              letter: content,
+              letter: score,
             );
           }
           return LetterBox(

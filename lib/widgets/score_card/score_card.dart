@@ -62,6 +62,7 @@ class ScoreCard extends ConsumerWidget {
                                     .type);
                         return ScoreCardRow(
                           word: round == null ? '' : round.entry,
+                          score: round == null ? ' ' : round.score.toString(),
                         );
                       }),
                     ),
