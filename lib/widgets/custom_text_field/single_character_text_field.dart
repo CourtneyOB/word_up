@@ -161,9 +161,20 @@ class _SingleCharacterTextFieldState
     }
     List<String> diceLetters =
         ref.read(roundListProvider.notifier).getDiceValues();
+    List<String> unusedLetters = [...diceLetters];
     for (int i = 0; i < word.length; i++) {
       //if it's not a rolled consonant and not a vowel
-      if (!diceLetters.contains(word[i]) && !vowels.contains(word[i])) {
+      if (!unusedLetters.contains(word[i]) && !vowels.contains(word[i])) {
+        //if the letter is rolled but has already been used
+        if (diceLetters.contains(word[i])) {
+          await showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return ValidationAlertDialog(
+                    content: '${word[i]} has already been used');
+              });
+          return;
+        }
         await showDialog(
             context: context,
             builder: (BuildContext context) {
@@ -171,6 +182,9 @@ class _SingleCharacterTextFieldState
                   content: 'Dice roll does not contain ${word[i]}');
             });
         return;
+      } else if (!vowels.contains(word[i])) {
+        //else if it's a consonant, remove it from the dice roll list so it cannot be reused
+        unusedLetters.remove(word[i]);
       }
     }
     //if passes validation, submit the word
