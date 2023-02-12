@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:word_up/constants.dart';
-import 'package:word_up/main.dart';
 import 'package:word_up/widgets/score_card/score_card.dart';
+import 'package:word_up/widgets/styled_button.dart';
 
 class BottomBar extends ConsumerWidget {
   const BottomBar({Key? key}) : super(key: key);
@@ -14,20 +14,18 @@ class BottomBar extends ConsumerWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: kBorderColour),
-            onPressed: () => _showScorecard(context),
-            child: const Text(
-              'SCORECARD',
-              style: TextStyle(color: Colors.white),
-            ),
+          child: StyledButton(
+            text: 'SCORECARD',
+            onPressed: () {
+              showScorecard(context);
+            },
           ),
         ),
       ],
     );
   }
 
-  _showScorecard(context) {
+  showScorecard(context) {
     showModalBottomSheet(
         context: context,
         isScrollControlled: true,

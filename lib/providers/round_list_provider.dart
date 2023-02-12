@@ -28,7 +28,6 @@ class RoundListProvider extends StateNotifier<List<Round>> {
   }
 
   void submitWord(String word, VowelType vowelType) {
-    //TODO: calculate score
     state = [
       for (Round round in state)
         if (round == state.last)
@@ -36,6 +35,14 @@ class RoundListProvider extends StateNotifier<List<Round>> {
         else
           round,
     ];
+  }
+
+  List<String> getDiceValues() {
+    List<String> value = [];
+    for (DiceValue dice in state.last.diceRoll) {
+      value.add(dice.letter);
+    }
+    return value;
   }
 
   void restart() {

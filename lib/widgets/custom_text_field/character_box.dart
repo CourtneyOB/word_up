@@ -4,14 +4,14 @@ import 'package:word_up/constants.dart';
 import 'package:word_up/widgets/box_backing.dart';
 
 class CharacterBox extends StatefulWidget {
-  const CharacterBox(
-      {Key? key,
-      this.letter = '',
-      this.bonus = false,
-      required this.controller,
-      required this.focusNode,
-      required this.onChanged})
-      : super(key: key);
+  const CharacterBox({
+    Key? key,
+    this.letter = '',
+    this.bonus = false,
+    required this.controller,
+    required this.focusNode,
+    required this.onChanged,
+  }) : super(key: key);
 
   final String letter;
   final bool bonus;
@@ -25,6 +25,8 @@ class CharacterBox extends StatefulWidget {
 }
 
 class _CharacterBoxState extends State<CharacterBox> {
+  bool isValid = true;
+
   @override
   void initState() {
     super.initState();
@@ -54,7 +56,10 @@ class _CharacterBoxState extends State<CharacterBox> {
               focusNode: widget.focusNode,
               textAlign: TextAlign.center,
               showCursor: false,
-              inputFormatters: [UppercaseInputFormatter()],
+              inputFormatters: [
+                UppercaseInputFormatter(),
+                FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]"))
+              ],
               style: const TextStyle(fontSize: 40),
               decoration: const InputDecoration(
                 border: InputBorder.none,
