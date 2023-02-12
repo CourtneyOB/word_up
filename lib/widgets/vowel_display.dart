@@ -26,7 +26,7 @@ class _VowelDisplayState extends ConsumerState<VowelDisplay> {
             if (!vowelFilter.type.isPositive()) {
               decor = BoxDecor.negative;
             }
-            if (vowelFilter.type == VowelType.wildcard) {
+            if (vowelFilter.type == VowelCategory.wildcard) {
               decor = BoxDecor.multiLetter;
             }
             if (vowelFilter.inactive) {

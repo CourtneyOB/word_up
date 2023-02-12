@@ -36,7 +36,7 @@ class ScoreCard extends ConsumerWidget {
                       if (!vowelFilter.type.isPositive()) {
                         decor = BoxDecor.negative;
                       }
-                      if (vowelFilter.type == VowelType.wildcard) {
+                      if (vowelFilter.type == VowelCategory.wildcard) {
                         decor = BoxDecor.multiLetter;
                       }
                       return LetterBox(

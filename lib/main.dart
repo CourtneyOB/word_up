@@ -7,8 +7,7 @@ import 'package:word_up/providers/round_list_provider.dart';
 import 'package:word_up/screens/main_screen.dart';
 import 'package:collection/collection.dart';
 import 'package:word_up/game_data.dart';
-
-//TODO: calculate score
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -19,6 +18,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MaterialApp(
       title: 'Word up',
       theme: ThemeData(
@@ -48,15 +49,15 @@ final vowelFilterDisplayProvider = Provider<List<VowelFilter>>((ref) {
   return filterVowels(word, rounds);
 });
 final wordEntryProvider = StateProvider<String>((ref) => '');
-final selectedVowelProvider = StateProvider<VowelType?>((ref) => null);
+final selectedVowelProvider = StateProvider<VowelCategory?>((ref) => null);
 
 List<VowelFilter> filterVowels(String word, List<Round> rounds) {
   List<VowelFilter> list = [];
 
-  for (var value in VowelType.values) {
+  for (var value in VowelCategory.values) {
     bool inactive = false;
     //filter according to entered word
-    if (value.isPositive() && value != VowelType.wildcard) {
+    if (value.isPositive() && value != VowelCategory.wildcard) {
       List<String> otherVowels = List.from(vowels);
       otherVowels.remove(value.stringValue());
       for (String vowel in otherVowels) {

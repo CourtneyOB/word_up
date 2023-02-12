@@ -27,7 +27,7 @@ class RoundListProvider extends StateNotifier<List<Round>> {
     }
   }
 
-  void submitWord(String word, VowelType vowelType) {
+  void submitWord(String word, VowelCategory vowelType) {
     int score = 0;
 
     List<DiceValue> diceValues = [...state.last.diceRoll];

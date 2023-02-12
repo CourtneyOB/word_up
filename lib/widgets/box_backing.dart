@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:word_up/constants.dart';
 
 class BoxBacking extends StatelessWidget {
   const BoxBacking(
@@ -28,8 +29,9 @@ class BoxBacking extends StatelessWidget {
             decoration: BoxDecoration(
                 color: colour,
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
-                border:
-                    border ? Border.all(color: Colors.blue, width: 2.0) : null),
+                border: border
+                    ? Border.all(color: kBorderColour, width: 2.0)
+                    : null),
             child: child,
           ),
         ),
