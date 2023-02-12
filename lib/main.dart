@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:word_up/constants.dart';
 import 'package:word_up/model/round.dart';
 import 'package:word_up/model/vowel_filter.dart';
 import 'package:word_up/providers/round_list_provider.dart';
@@ -22,6 +23,8 @@ class MyApp extends StatelessWidget {
       title: 'Word up',
       theme: ThemeData(
         fontFamily: 'PassionOne',
+        textSelectionTheme:
+            const TextSelectionThemeData(selectionHandleColor: kBorderColour),
       ),
       home: const MainScreen(),
     );
