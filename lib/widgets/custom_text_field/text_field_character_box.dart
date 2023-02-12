@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:word_up/constants.dart';
 import 'package:word_up/widgets/box_backing.dart';
 
-class CharacterBox extends StatefulWidget {
-  const CharacterBox({
+class TextFieldCharacterBox extends StatefulWidget {
+  const TextFieldCharacterBox({
     Key? key,
     this.letter = '',
     this.bonus = false,
@@ -21,10 +21,10 @@ class CharacterBox extends StatefulWidget {
   final Function(String) onChanged;
 
   @override
-  State<CharacterBox> createState() => _CharacterBoxState();
+  State<TextFieldCharacterBox> createState() => _TextFieldCharacterBoxState();
 }
 
-class _CharacterBoxState extends State<CharacterBox> {
+class _TextFieldCharacterBoxState extends State<TextFieldCharacterBox> {
   bool isValid = true;
 
   @override

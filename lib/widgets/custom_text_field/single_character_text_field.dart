@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:word_up/game_data.dart';
 import 'package:word_up/main.dart';
 import 'package:word_up/widgets/backing_container.dart';
-import 'package:word_up/widgets/custom_text_field/character_box.dart';
+import 'package:word_up/widgets/custom_text_field/text_field_character_box.dart';
 import 'package:word_up/widgets/styled_button.dart';
 import 'package:word_up/widgets/validation_alert_dialog.dart';
 
@@ -51,7 +51,7 @@ class _SingleCharacterTextFieldState
                   if (index > 3) {
                     bonus = true;
                   }
-                  return CharacterBox(
+                  return TextFieldCharacterBox(
                     bonus: bonus,
                     controller: controllers[index],
                     focusNode: focusNodes[index],
