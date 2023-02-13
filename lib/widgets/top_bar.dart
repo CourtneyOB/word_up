@@ -6,8 +6,6 @@ import 'package:word_up/main.dart';
 class TopBar extends ConsumerWidget {
   const TopBar({Key? key}) : super(key: key);
 
-  final int roundNumber = 1;
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(

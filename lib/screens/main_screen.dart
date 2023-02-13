@@ -20,23 +20,21 @@ class MainScreen extends StatelessWidget {
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 color: kBackgroundColour),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const TopBar(),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: const [
-                        DiceDisplay(),
-                        VowelDisplay(),
-                        SingleCharacterTextField(),
-                        BottomBar(),
-                      ],
-                    ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const TopBar(),
+                  Column(
+                    children: const [
+                      DiceDisplay(),
+                      VowelDisplay(),
+                      SingleCharacterTextField(),
+                      BottomBar(),
+                    ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
