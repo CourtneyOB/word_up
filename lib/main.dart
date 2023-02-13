@@ -9,6 +9,13 @@ import 'package:collection/collection.dart';
 import 'package:word_up/game_data.dart';
 import 'package:flutter/services.dart';
 
+//TODO: make custom keyboard
+//TODO: title and how-to-play screen
+//TODO: reformat scorecard - +1 and total headings
+//TODO: reformat scorecard - total score
+//TODO: reformat scorecard - dice point values
+//TODO: add dictionary
+
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
