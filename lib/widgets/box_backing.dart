@@ -30,7 +30,7 @@ class BoxBacking extends StatelessWidget {
                 color: colour,
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
                 border: border
-                    ? Border.all(color: kBorderColour, width: 2.0)
+                    ? Border.all(color: kHighlightColour, width: 2.0)
                     : null),
             child: child,
           ),
