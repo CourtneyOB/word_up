@@ -8,13 +8,15 @@ import 'package:word_up/screens/main_screen.dart';
 import 'package:collection/collection.dart';
 import 'package:word_up/game_data.dart';
 import 'package:flutter/services.dart';
+import 'package:word_up/screens/title_screen.dart';
 
 //TODO: make custom keyboard
-//TODO: title and how-to-play screen
+//TODO: how-to-play screen
 //TODO: reformat scorecard - +1 and total headings
 //TODO: reformat scorecard - total score
 //TODO: reformat scorecard - dice point values
 //TODO: add dictionary
+//TODO: round transition
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -34,7 +36,11 @@ class MyApp extends StatelessWidget {
         textSelectionTheme:
             const TextSelectionThemeData(selectionHandleColor: kBorderColour),
       ),
-      home: const MainScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const TitleScreen(),
+        '/game': (context) => const MainScreen(),
+      },
     );
   }
 }
