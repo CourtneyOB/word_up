@@ -17,7 +17,7 @@ class RoundListProvider extends StateNotifier<List<Round>> {
   final random = Random();
 
   void newRound() {
-    if (state.length < 11) {
+    if (state.length < 12) {
       List<DiceValue> diceRoll = [];
       for (Dice d in dice) {
         int r = random.nextInt(d.sides.length);

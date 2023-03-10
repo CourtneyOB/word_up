@@ -20,3 +20,4 @@ const double kDiceBoxWidth = 70.0;
 const double kVowelBoxWidth = 70.0;
 const double kTextFieldBoxWidth = 50.0;
 const double kScoreCardBoxWidth = 45.0;
+const double kSummaryScoreCardBoxWidth = 39.0;

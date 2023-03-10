@@ -4,14 +4,10 @@ import 'package:word_up/game_data.dart';
 import 'package:word_up/main.dart';
 import 'package:word_up/widgets/backing_container.dart';
 import 'package:word_up/widgets/custom_text_field/text_field_character_box.dart';
-import 'package:word_up/widgets/styled_button.dart';
 import 'package:word_up/widgets/validation_alert_dialog.dart';
 
 class SingleCharacterTextField extends ConsumerStatefulWidget {
-  const SingleCharacterTextField({Key? key, this.sideBarLetter})
-      : super(key: key);
-
-  final String? sideBarLetter;
+  const SingleCharacterTextField({Key? key}) : super(key: key);
 
   @override
   ConsumerState<SingleCharacterTextField> createState() =>
@@ -99,7 +95,12 @@ class _SingleCharacterTextFieldState
             child: BackingContainer(
               child: IconButton(
                 onPressed: () async {
-                  submitWord();
+                  bool success = await submitWord();
+                  if (success) {
+                    if (mounted) {
+                      Navigator.pushNamed(context, '/round_summary');
+                    }
+                  }
                 },
                 icon: const Icon(
                   Icons.arrow_forward_ios,
@@ -138,7 +139,7 @@ class _SingleCharacterTextFieldState
     }
   }
 
-  void submitWord() async {
+  Future<bool> submitWord() async {
     //check if field is empty
     String word = ref.read(wordEntryProvider);
     if (word == '') {
@@ -147,7 +148,7 @@ class _SingleCharacterTextFieldState
           builder: (BuildContext context) {
             return const ValidationAlertDialog(content: 'Please enter a word');
           });
-      return;
+      return false;
     }
     //check a vowel category has been selected
     if (ref.read(selectedVowelProvider) == null) {
@@ -157,7 +158,7 @@ class _SingleCharacterTextFieldState
             return const ValidationAlertDialog(
                 content: 'Please select a vowel category to assign');
           });
-      return;
+      return false;
     }
     List<String> diceLetters =
         ref.read(roundListProvider.notifier).getDiceValues();
@@ -173,7 +174,7 @@ class _SingleCharacterTextFieldState
                 return ValidationAlertDialog(
                     content: '${word[i]} has already been used');
               });
-          return;
+          return false;
         }
         await showDialog(
             context: context,
@@ -181,7 +182,7 @@ class _SingleCharacterTextFieldState
               return ValidationAlertDialog(
                   content: 'Dice roll does not contain ${word[i]}');
             });
-        return;
+        return false;
       } else if (!vowels.contains(word[i])) {
         //else if it's a consonant, remove it from the dice roll list so it cannot be reused
         unusedLetters.remove(word[i]);
@@ -198,5 +199,6 @@ class _SingleCharacterTextFieldState
     unfocusAll();
     ref.read(selectedVowelProvider.notifier).state = null;
     ref.read(roundListProvider.notifier).newRound();
+    return true;
   }
 }

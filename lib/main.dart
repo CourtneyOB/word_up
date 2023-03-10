@@ -4,10 +4,14 @@ import 'package:word_up/constants.dart';
 import 'package:word_up/model/round.dart';
 import 'package:word_up/model/vowel_filter.dart';
 import 'package:word_up/providers/round_list_provider.dart';
+import 'package:word_up/screens/create_room_screen.dart';
+import 'package:word_up/screens/join_room_screen.dart';
+import 'package:word_up/screens/lobby_screen.dart';
 import 'package:word_up/screens/main_screen.dart';
 import 'package:collection/collection.dart';
 import 'package:word_up/game_data.dart';
 import 'package:flutter/services.dart';
+import 'package:word_up/screens/round_summary_screen.dart';
 import 'package:word_up/screens/title_screen.dart';
 
 //TODO: make custom keyboard
@@ -40,6 +44,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const TitleScreen(),
         '/game': (context) => const MainScreen(),
+        '/create_room': (context) => const CreateRoomScreen(),
+        '/join_room': (context) => const JoinRoomScreen(),
+        '/lobby': (context) => const LobbyScreen(),
+        '/round_summary': (context) => const RoundSummaryScreen(),
       },
     );
   }
@@ -63,6 +71,7 @@ final vowelFilterDisplayProvider = Provider<List<VowelFilter>>((ref) {
 });
 final wordEntryProvider = StateProvider<String>((ref) => '');
 final selectedVowelProvider = StateProvider<VowelCategory?>((ref) => null);
+final nicknameProvider = StateProvider<String>((ref) => '');
 
 List<VowelFilter> filterVowels(String word, List<Round> rounds) {
   List<VowelFilter> list = [];

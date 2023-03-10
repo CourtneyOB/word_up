@@ -19,19 +19,41 @@ class TitleScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(32.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const FittedBox(
-                    child: Text(
-                      'WORD UP',
-                      style: kTitleFont,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const FittedBox(
+                          child: Text(
+                            'WORD UP',
+                            style: kTitleFont,
+                          ),
+                        ),
+                        StyledButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/create_room');
+                            },
+                            text: 'Create Room'),
+                        StyledButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/join_room');
+                            },
+                            text: 'Join Room'),
+                      ],
                     ),
                   ),
                   StyledButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/game');
+                      onPressed: () async {
+                        await showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return const AlertDialog(
+                                content: Text('Placeholder'),
+                              );
+                            });
                       },
-                      text: 'Play'),
+                      text: 'How to play'),
                 ],
               ),
             ),
