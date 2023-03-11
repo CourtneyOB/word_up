@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
 import 'package:word_up/main.dart';
-import 'package:word_up/widgets/final_scores_list.dart';
+import 'package:word_up/widgets/round_summary/final_scores_list.dart';
 import 'package:word_up/widgets/letter_box.dart';
-import 'package:word_up/widgets/round_scores_list.dart';
+import 'package:word_up/widgets/round_summary/round_scores_list.dart';
 import 'package:word_up/widgets/score_card/score_card_row.dart';
 import 'package:word_up/widgets/styled_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

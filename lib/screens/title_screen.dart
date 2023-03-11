@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
+import 'package:word_up/how_to_play_alert_dialog.dart';
 import 'package:word_up/widgets/custom_alert_dialog.dart';
 import 'package:word_up/widgets/styled_button.dart';
 
@@ -49,9 +50,7 @@ class TitleScreen extends StatelessWidget {
                         await showDialog(
                             context: context,
                             builder: (BuildContext context) {
-                              return const CustomAlertDialog(
-                                  title: 'How to play',
-                                  content: Text('Placeholder'));
+                              return const HowToPlayAlertDialog();
                             });
                       },
                       text: 'How to play'),

@@ -6,6 +6,7 @@ const kTitleFont = TextStyle(
     fontSize: 100,
     height: 1,
     decoration: TextDecoration.none);
+const kBoldTextFont = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
 
 const kBackgroundColour = Color(0XFFe8dccd);
 const kBorderColour = Color(0XFF302725);
