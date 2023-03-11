@@ -15,9 +15,6 @@ import 'package:word_up/screens/round_summary_screen.dart';
 import 'package:word_up/screens/title_screen.dart';
 
 //TODO: make custom keyboard
-//TODO: reformat scorecard - +1 and total headings
-//TODO: reformat scorecard - total score
-//TODO: reformat scorecard - dice point values
 //TODO: add dictionary
 
 void main() {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/constants.dart';
-import 'package:word_up/main.dart';
 import 'package:word_up/widgets/letter_box.dart';
 
 class ScoreCardRow extends StatelessWidget {
@@ -18,25 +17,14 @@ class ScoreCardRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: List.generate(7, (index) {
         String content = ' ';
         if (word.length > index) {
           content = word[index];
         }
-        if (index > 3) {
-          if (index == 6) {
-            return LetterBox(
-              width: boxSize,
-              decor: BoxDecor.total,
-              letter: score,
-            );
-          }
-          return LetterBox(
-            width: boxSize,
-            decor: BoxDecor.bonus,
-            letter: content,
-          );
+        if (index == 6) {
+          content = score;
         }
         return LetterBox(
           width: boxSize,

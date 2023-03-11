@@ -4,6 +4,7 @@ import 'package:word_up/constants.dart';
 import 'package:word_up/main.dart';
 import 'package:word_up/widgets/letter_box.dart';
 import 'package:word_up/model/vowel_filter.dart';
+import 'package:word_up/widgets/score_card/score_card_headers.dart';
 import 'package:word_up/widgets/score_card/score_card_row.dart';
 
 class RoundScoresList extends ConsumerWidget {
@@ -27,6 +28,7 @@ class RoundScoresList extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(ref.read(nicknameProvider)),
+              const ScoreCardHeaders(boxWidth: kSummaryScoreCardBoxWidth),
               IntrinsicHeight(
                 child: Row(
                   children: [
@@ -53,11 +55,14 @@ class RoundScoresList extends ConsumerWidget {
                       thickness: 2.0,
                       indent: 5.0,
                     ),
-                    ScoreCardRow(
-                      word: ref.read(roundListProvider)[roundNumber - 1].entry,
-                      boxSize: kSummaryScoreCardBoxWidth,
-                      score:
-                          '${ref.read(roundListProvider)[roundNumber - 1].score}',
+                    Expanded(
+                      child: ScoreCardRow(
+                        word:
+                            ref.read(roundListProvider)[roundNumber - 1].entry,
+                        boxSize: kSummaryScoreCardBoxWidth,
+                        score:
+                            '${ref.read(roundListProvider)[roundNumber - 1].score}',
+                      ),
                     ),
                   ],
                 ),
