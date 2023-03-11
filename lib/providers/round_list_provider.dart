@@ -62,6 +62,7 @@ class RoundListProvider extends StateNotifier<List<Round>> {
 
   void restart() {
     state = [];
+    newRound();
   }
 
   void printRounds() {

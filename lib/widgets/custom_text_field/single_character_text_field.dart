@@ -4,7 +4,7 @@ import 'package:word_up/game_data.dart';
 import 'package:word_up/main.dart';
 import 'package:word_up/widgets/backing_container.dart';
 import 'package:word_up/widgets/custom_text_field/text_field_character_box.dart';
-import 'package:word_up/widgets/validation_alert_dialog.dart';
+import 'package:word_up/widgets/custom_alert_dialog.dart';
 
 class SingleCharacterTextField extends ConsumerStatefulWidget {
   const SingleCharacterTextField({Key? key}) : super(key: key);
@@ -146,7 +146,14 @@ class _SingleCharacterTextFieldState
       await showDialog(
           context: context,
           builder: (BuildContext context) {
-            return const ValidationAlertDialog(content: 'Please enter a word');
+            return const CustomAlertDialog(
+              content: Text(
+                'Please enter a word',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18.0),
+              ),
+              title: 'Oops!',
+            );
           });
       return false;
     }
@@ -155,8 +162,14 @@ class _SingleCharacterTextFieldState
       await showDialog(
           context: context,
           builder: (BuildContext context) {
-            return const ValidationAlertDialog(
-                content: 'Please select a vowel category to assign');
+            return const CustomAlertDialog(
+              content: Text(
+                'Please select a vowel category to assign',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18.0),
+              ),
+              title: 'Oops!',
+            );
           });
       return false;
     }
@@ -171,16 +184,26 @@ class _SingleCharacterTextFieldState
           await showDialog(
               context: context,
               builder: (BuildContext context) {
-                return ValidationAlertDialog(
-                    content: '${word[i]} has already been used');
+                return CustomAlertDialog(
+                    content: Text(
+                      '${word[i]} has already been used',
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontSize: 18.0),
+                    ),
+                    title: 'Oops!');
               });
           return false;
         }
         await showDialog(
             context: context,
             builder: (BuildContext context) {
-              return ValidationAlertDialog(
-                  content: 'Dice roll does not contain ${word[i]}');
+              return CustomAlertDialog(
+                  content: Text(
+                    'Dice roll does not contain ${word[i]}',
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 18.0),
+                  ),
+                  title: 'Oops!');
             });
         return false;
       } else if (!vowels.contains(word[i])) {

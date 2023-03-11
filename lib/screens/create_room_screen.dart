@@ -3,7 +3,7 @@ import 'package:word_up/constants.dart';
 import 'package:word_up/main.dart';
 import 'package:word_up/widgets/styled_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:word_up/widgets/validation_alert_dialog.dart';
+import 'package:word_up/widgets/custom_alert_dialog.dart';
 
 class CreateRoomScreen extends ConsumerStatefulWidget {
   const CreateRoomScreen({Key? key}) : super(key: key);
@@ -63,8 +63,13 @@ class _CreateRoomScreenState extends ConsumerState<CreateRoomScreen> {
                             await showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return const ValidationAlertDialog(
-                                      content: 'Please enter a nickname');
+                                  return const CustomAlertDialog(
+                                      content: Text(
+                                        'Please enter a nickname',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(fontSize: 18.0),
+                                      ),
+                                      title: 'Oops!');
                                 });
                           } else {
                             ref.read(roundListProvider.notifier).restart();

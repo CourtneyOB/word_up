@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:word_up/widgets/styled_button.dart';
 
-class ValidationAlertDialog extends StatelessWidget {
-  const ValidationAlertDialog({Key? key, required this.content})
+class CustomAlertDialog extends StatelessWidget {
+  const CustomAlertDialog(
+      {Key? key, required this.title, required this.content})
       : super(key: key);
 
-  final String content;
+  final String title;
+  final Widget content;
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text(
-        'Oops!',
+      title: Text(
+        title,
         textAlign: TextAlign.center,
-        style: TextStyle(fontSize: 40.0),
+        style: const TextStyle(fontSize: 40.0),
       ),
-      content: Text(
-        content,
-        textAlign: TextAlign.center,
-        style: const TextStyle(fontSize: 18.0),
-      ),
+      content: content,
       contentPadding:
           const EdgeInsets.symmetric(vertical: 20.0, horizontal: 16.0),
       actionsAlignment: MainAxisAlignment.center,
