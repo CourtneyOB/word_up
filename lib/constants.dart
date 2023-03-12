@@ -4,6 +4,7 @@ const kTitleFont = TextStyle(
     fontFamily: 'PassionOne',
     color: Color(0XFF302725),
     fontSize: 100,
+    fontWeight: FontWeight.w700,
     height: 1,
     decoration: TextDecoration.none);
 const kBoldTextFont = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
